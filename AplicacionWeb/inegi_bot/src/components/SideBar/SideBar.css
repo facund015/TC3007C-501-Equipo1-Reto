@@ -1,0 +1,49 @@
+.sidebar {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -ms-transform: translateY(-92%);
+    transform: translateY(-92%);
+    transition: all 0.25s ease-in-out;
+}
+
+.sidebar__active {
+    transform: translateX(-20rem) translateY(-92%);
+}
+
+.sidebar__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2.5rem;
+    height: 30rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.sidebar__btn{
+    width: auto;
+    height: auto;
+    border: none;
+    outline: none;
+    writing-mode: vertical-lr;
+    text-orientation: sideways !important;
+    rotate: 180deg;
+    padding: 0.5rem 0.25rem;
+    line-height: 1.75rem;
+    color: white;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1px 0;
+}
+
+.btn__color-blue-1{
+    background-color: #01438f;
+}
+
+.btn__color-blue-2{
+    background-color: #052c65;
+}
+
+.btn__color-blue-3 {
+    background-color: #031633;
+}
+
