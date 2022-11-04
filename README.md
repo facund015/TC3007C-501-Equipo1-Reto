@@ -9,6 +9,8 @@ Repositorio para el reto de la asignatura TC3007C Inteligencia artificial avanza
 - Jesús David Núñez Rodríguez A01634928
 - Facundo Vecchi A01283666
 - Ricardo Andres Arriaga Quezada A01570553
+- Emilia Victoria Jácome Íñiguez A00828347
+
 
 ## Descripción del reto
 Con este reto solucionaremos un problema relevante en la industria de inteligencia artificial y ciencia de datos con herramientas vanguardistas. 
