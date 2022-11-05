@@ -6,6 +6,8 @@ Dentro de esta carpeta se encuentran los siguientes archivos:
 - `Gantt.pdf`: Documento conteniendo el diagrama de Gantt.
 - `Especificacion_de_datos.pdf`: Documento conteniendo la especificación de datos que se utilizaran para el pryecto.
 - `Interacciones_de_entrada_y_salida del_bot.pdf`: Documento conteniendo las interacciones y formatos del bot.
+- `Diseno_de_funcionalidad_backend.pdf`: Documento conteniendo el diseño de la funcionalidad del backend.
+- `Documentacion_frontend.pdf`: Documento conteniendo la documentación del frontend.
 
 ## Especificación de requerimientos
 En este documento se encuentra la especificación de requerimientos del proyecto. En este se puede encontrar la descripción del problema, los objetivos, los requerimientos funcionales y no funcionales, los supuestos y las restricciones.
@@ -21,3 +23,9 @@ En este documento se encuentran las herramientas y tecnologias que se utilizaran
 
 ## Interacciones de entrada y salida del bot
 En este documento se encuentran las interacciones que el usuario podra realizar con el bot asi como los formatos de entrada y salida.
+
+## Diseño de funcionalidad backend
+En este documento se encuentra el diseño de la funcionalidad del backend del proyecto. En este se puede encontrar a detalle la estructura de los endpoints y los modelos de datos como las entradas y salidas de estos mismos.
+
+## Documentación frontend
+En este documento se encuentra la documentación del frontend del proyecto. En este se puede encontrar el progreso que se ha tenido en el desarrollo del frontend.
