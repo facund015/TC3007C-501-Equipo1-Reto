@@ -1,3 +1,7 @@
 .btn__color-blue-4{
     background-color: #020B1A;
 }
+
+.sidebar__btn:hover{
+    cursor: pointer;
+}

@@ -14,7 +14,7 @@ export const ChatBotButton = () => {
     return (
         <>
             <div onClick={toggleChatBot}>
-                <div className={"sidebar__btn btn__color-blue-4"} onClick={toggleChatBot}>INEGI BOT <SiChatbot/></div>
+                <div className={"sidebar__btn btn__color-blue-4"}>INEGI BOT <SiChatbot/></div>
             </div>
         </>
     )
