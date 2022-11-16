@@ -1,6 +1,7 @@
 from random import random
 from flask import Flask, send_file
 from flask_cors import CORS
+from spark_nacional import *
 
 app = Flask(__name__)
 CORS(app)
