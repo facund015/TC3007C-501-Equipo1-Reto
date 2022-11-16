@@ -6,7 +6,6 @@ from spark_nacional import *
 app = Flask(__name__)
 CORS(app)
 
-
 @app.route('/message/<message>', methods = ['GET'])
 def hello_world(message):
     random_number = int(random()*3)
@@ -34,5 +33,21 @@ def hello_world(message):
     
     return messages[random_number]
     
+
+@app.route('/pob_municipal/<message>', methods = ['GET'])
+def hello_world2(message):
+    pob_mun = pob_municipio(message, spark)
+    print(message)
+    
+    messages = [
+        {
+            "type": "simple",
+            "message":"En 2020 la poblacion de %s era de %s personas" % (message, pob_mun)
+            }
+    ]
+    
+    return messages[0]
+    
 if __name__ == '__main__':
+    spark = begin_spark()
     app.run(debug=True)
