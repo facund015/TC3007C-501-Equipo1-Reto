@@ -50,4 +50,4 @@ def hello_world2(message):
     
 if __name__ == '__main__':
     spark = begin_spark()
-    app.run(debug=True)
+    app.run(debug=False)
