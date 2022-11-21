@@ -36,13 +36,13 @@ def hello_world(message):
 
 @app.route('/pob_municipal/<message>', methods = ['GET'])
 def hello_world2(message):
-    pob_mun = pob_municipio(message, spark)
+    pob_mun, nom_mun = pob_municipio(message, spark)
     print(message)
     
     messages = [
         {
             "type": "simple",
-            "message":"En 2020 la poblacion de %s era de %s personas" % (message, pob_mun)
+            "message":"En 2020 la poblacion de %s era de %s personas" % (nom_mun, pob_mun)
             }
     ]
     

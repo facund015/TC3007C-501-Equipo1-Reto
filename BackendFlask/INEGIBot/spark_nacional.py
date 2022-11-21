@@ -1,5 +1,6 @@
 #Import libraries 
 import findspark
+import unicodedata
 findspark.init()
 import shapely
 import pandas as pd
@@ -34,6 +35,19 @@ def connection_municipal(spark):
     BD_MUNICIPAL.createOrReplaceTempView("estados")
 
 
+def clean_str(x):
+    x = (unicodedata.normalize('NFKD', x).encode('ASCII', 'ignore').strip().lower().decode('UTF-8'))
+    return x
+
+
+def get_CVEGEO_mun(municipio):
+    #df_mun = pd.read_csv('input/df_diccionario_mun.csv')
+    df_mun = pd.read_csv('BackendFlask\INEGIBot\input\df_diccionario_mun.csv')
+    clave = df_mun.loc[:, 'NOMGEO2'] == municipio
+    clave = str(int(df_mun.loc[clave]['CVEGEO']))
+    return clave
+
+
 #spark = begin_spark()
 #Establish connection to db
 
@@ -41,15 +55,20 @@ def connection_municipal(spark):
 #BD_NACIONAL.show()
 def pob_municipio(municipio, spark):
     connection_municipal(spark)
+    municipio = clean_str(municipio)
+    municipio = get_CVEGEO_mun(municipio)
     pob_m = spark.sql("""
-    SELECT POB1
+    SELECT POB1, NOMGEO
     FROM estados
-    WHERE NOMGEO = '%s';
+    WHERE CVEGEO = '%s';
     """ % municipio)
     pob_m.cache()
     pob_m = pob_m.toPandas().to_numpy()
+    nom_m = str(pob_m[0][1])
     pob_m = str(pob_m[0][0])
-    return pob_m
+    return pob_m, nom_m
 
 #spark = begin_spark()
+#aa, bb = pob_municipio('Monterrey', spark)
+#print(aa, bb)
 #print(pob_municipio('Monterrey', spark))
