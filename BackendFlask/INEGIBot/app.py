@@ -34,15 +34,16 @@ def hello_world(message):
     return messages[random_number]
     
 
-@app.route('/pob_municipal/<message>', methods = ['GET'])
-def hello_world2(message):
-    pob_mun, nom_mun = pob_municipio(message, spark)
-    print(message)
+@app.route('/pob_municipal/<estado>/<municipio>', methods = ['GET'])
+def hello_world2(estado, municipio):
+    nom_e, nom_m, pob_m = pob_municipio(estado, municipio, spark)
+    #nom_e, nom_m, pob_m = pob_municipio('Nuevo Leon', 'Monterrey', spark)
+    print(estado, municipio)
     
     messages = [
         {
             "type": "simple",
-            "message":"En 2020 la poblacion de %s era de %s personas" % (nom_mun, pob_mun)
+            "message":"En 2020 la poblacion de %s ,%s era de %s personas" % (nom_m, nom_e, pob_m)
             }
     ]
     

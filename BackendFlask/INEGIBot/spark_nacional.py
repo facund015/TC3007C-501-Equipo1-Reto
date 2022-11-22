@@ -30,45 +30,45 @@ def begin_spark():
 
 def connection_municipal(spark):
     BD_MUNICIPAL = spark.read.parquet(f"BackendFlask/INEGIBot/input/SCINCE_Parquets_Municipal/*.parquet")
-    #BD_NACIONAL = BD_NACIONAL.select('CVEGEO', 'ECO1_R', 'EDU46_R', 'VIV82_R', 'VIV83_R', 'VIV84_R', 'geometry') *In case of 
     BD_MUNICIPAL.cache()
     BD_MUNICIPAL.createOrReplaceTempView("estados")
 
 
-def clean_str(x):
+def clean_str(x, y):
+    x = x.replace("%20", " " )
     x = (unicodedata.normalize('NFKD', x).encode('ASCII', 'ignore').strip().lower().decode('UTF-8'))
-    return x
+    y = y.replace("%20", " " )
+    y = (unicodedata.normalize('NFKD', y).encode('ASCII', 'ignore').strip().lower().decode('UTF-8'))
+    return x, y
 
 
-def get_CVEGEO_mun(municipio):
-    #df_mun = pd.read_csv('input/df_diccionario_mun.csv')
+def get_CVEGEO_mun(estado, municipio):
     df_mun = pd.read_csv('BackendFlask\INEGIBot\input\df_diccionario_mun.csv')
-    clave = df_mun.loc[:, 'NOMGEO2'] == municipio
-    clave = str(int(df_mun.loc[clave]['CVEGEO']))
+    #clave = df_mun.loc['NOMGEO2' == municipio and 'NOM_ENT2' == estado ]
+    #clave = str(int(df_mun.loc[clave]['CVEGEO']))
+    clave = df_mun.query("NOM_ENT2 == '%s' and NOMGEO2 == '%s'" % (estado, municipio))
+    clave = str(int(clave['CVEGEO']))
     return clave
 
 
-#spark = begin_spark()
-#Establish connection to db
-
-#BD_NACIONAL.printSchema()
-#BD_NACIONAL.show()
-def pob_municipio(municipio, spark):
+def pob_municipio(estado, municipio, spark):
     connection_municipal(spark)
-    municipio = clean_str(municipio)
-    municipio = get_CVEGEO_mun(municipio)
+    estado, municipio = clean_str(estado, municipio)
+    clave = get_CVEGEO_mun(estado, municipio)
+    clave = clave.zfill(5)
     pob_m = spark.sql("""
-    SELECT POB1, NOMGEO
+    SELECT POB1, NOMGEO, NOM_ENT
     FROM estados
     WHERE CVEGEO = '%s';
-    """ % municipio)
+    """ % clave)
     pob_m.cache()
     pob_m = pob_m.toPandas().to_numpy()
+    nom_e = str(pob_m[0][2])
     nom_m = str(pob_m[0][1])
     pob_m = str(pob_m[0][0])
-    return pob_m, nom_m
+    return nom_e, nom_m, pob_m
 
-#spark = begin_spark()
-#aa, bb = pob_municipio('Monterrey', spark)
-#print(aa, bb)
+spark = begin_spark()
+nom_e, nom_m, pob_m = pob_municipio('Oaxaca', 'Abejones', spark)
+print('La población del municipio de ' + str(nom_m) + ', ' + str(nom_e) + ' es: '+str(pob_m))
 #print(pob_municipio('Monterrey', spark))
