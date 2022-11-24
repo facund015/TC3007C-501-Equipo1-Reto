@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route('/message/<message>', methods = ['GET'])
 def hello_world(message):
-    random_number = int(random()*3)
+    random_number = int(random()*4)
     
     print(message)
     
@@ -24,11 +24,34 @@ def hello_world(message):
         {
             "type": "graph_1",
             "message":"En 2020 la poblacion de hombres en Monterrey era de 2,890,950 y la de mujeres era de 2,893,492",
+            "graph":{
+                "labels": ["Hombres", "Mujeres"],
+                "datasets": [{
+                        "label": "Poblacion",
+                        "data":[2890950, 2893492],
+                        "backgroundColor": ["rgb(1, 67, 143)", "rgb(255, 99, 132)"]
+                        }
+                    ]
+                }   
+            },
+        {
+            "type": "graph_2",
+            "message":"A continuacion se muestra la poblacion desglosada por edad y sexo",
             "graph": {
-                "labels":["Hombres", "Mujeres"],
-                "data":[2890950, 2893492]
-                }
+                "labels": ["0-14", "15-64", "65+"],
+                "datasets": [{
+                        "label": "Hombres",
+                        "data":[10000, 10000, 10000],
+                        "backgroundColor": "rgb(1, 67, 143)"
+                    },
+                    {
+                        "label": "Mujeres",
+                        "data":[20000, 20000, 20000],
+                        "backgroundColor": "rgb(255, 99, 132)"
+                    }
+                ]
             }
+        }
     ]
     
     return messages[random_number]

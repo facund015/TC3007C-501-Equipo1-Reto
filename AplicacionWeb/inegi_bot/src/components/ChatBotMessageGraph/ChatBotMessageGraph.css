@@ -1,0 +1,35 @@
+.chatbot__message__graph{
+    position: relative;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin: 0.5rem 0;
+    max-width: 80% !important;
+    margin-left: 20% !important;
+    background-color: #ccc;
+    color: #000;
+    border-radius: 0.5rem 0.5rem 0 0.5rem;
+    text-align: left;
+}
+
+.chatbot__message__graph__expand{
+    position: absolute;
+    left: 0.3rem;
+    top: 0.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0.175rem;
+}
+
+.chatbot__message__graph__expand:hover{
+    background-color: #ccc;
+}
+
+
+

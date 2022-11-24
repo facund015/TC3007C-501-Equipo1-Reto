@@ -1,6 +1,6 @@
 .chatbot {
     position: absolute;
-    top: 50%;
+    top: calc(15% + 0.5rem);
     right: 0;
     width: 20rem;
     height: 35rem;
@@ -11,7 +11,7 @@
     box-sizing: border-box;
 
     transition: all 0.25s ease-in-out;
-    transform: translateX(100%) translateY(-79.99%);
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
 
@@ -19,7 +19,7 @@
 }
 
 .chatbot__active{
-    transform: translateX(0%) translateY(-79.99%);
+    transform: translateX(0%);
     opacity: 1;
     pointer-events: all;
 }

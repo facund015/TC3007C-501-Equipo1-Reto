@@ -1,14 +1,12 @@
 .sidebar {
     position: absolute;
     right: 0;
-    top: 50%;
-    -ms-transform: translateY(-92%);
-    transform: translateY(-92%);
+    top: 15%;
     transition: all 0.25s ease-in-out;
 }
 
 .sidebar__active {
-    transform: translateX(-20rem) translateY(-92%);
+    transform: translateX(-20rem);
 }
 
 .sidebar__container{

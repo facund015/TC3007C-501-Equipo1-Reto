@@ -3,7 +3,7 @@ import {IoSend} from "react-icons/io5";
 import {useState, createRef, useEffect} from "react";
 import {ChatBotMessageGraph} from "../ChatBotMessageGraph/ChatBotMessageGraph";
 
-export const ChatBot = () => {
+export const ChatBot = ({setActiveGraph}) => {
     const [chatLog, setChatLog] = useState([{
         text: "Hola, soy INEGI BOT, ¿en qué te puedo ayudar?", type: "simple", user: false
     }]);
@@ -48,6 +48,7 @@ export const ChatBot = () => {
             }
         }
 
+
         const sendRequest = (input) => {
             fetch(apiURL + input, {
                 method: "GET", headers: {
@@ -56,7 +57,6 @@ export const ChatBot = () => {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     updateChatLog(data);
                 })
                 .catch(error => {
@@ -90,9 +90,9 @@ export const ChatBot = () => {
                                         <p className={message.user ? "chatbot__message__user" : "chatbot__message__bot"}
                                            key={"message_"+index}>{message.text}</p>
                                         : message.type === "graph_1" ?
-                                                <ChatBotMessageGraph key={"graph_"+index} graph={message.graph}/>
+                                                <ChatBotMessageGraph key={"graph_"+index} graph={message.graph} setActiveGraph={setActiveGraph}/>
                                             : message.type === "graph_2" ?
-                                                    <ChatBotMessageGraph key={"graph_"+index} graph={message.graph}/>
+                                                    <ChatBotMessageGraph key={"graph_"+index} graph={message.graph} setActiveGraph={setActiveGraph}/>
                                                 : {}
 
                                 )
