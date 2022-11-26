@@ -6,12 +6,6 @@
     left: 0;
     z-index: 100;
     background-color: rgba(0,0,0,0.5);
-    animation: fade 0.25s linear;
-}
-
-@keyframes fade {
-    0%,100% { opacity: 0 }
-    50% { opacity: 1 }
 }
 
 .graph-viewer__background{
