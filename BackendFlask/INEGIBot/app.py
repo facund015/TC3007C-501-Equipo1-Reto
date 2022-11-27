@@ -2,6 +2,7 @@ from random import random
 from flask import Flask, send_file
 from flask_cors import CORS
 from spark_nacional import *
+from flags import *
 
 app = Flask(__name__)
 CORS(app)
@@ -48,6 +49,19 @@ def hello_world2(estado, municipio):
     ]
     
     return messages[0]
+
+
+@app.route('/master_funct/<master_json>', methods = ['GET'])
+def pandora(master_json):
+    master_json = {'municipio': 'Monterrey',  #Diccionario de pruebas para ingresar parametros
+    'estado': 'Nuevo Leon',
+    'filtro': 'none',  # lista disponible(hombre, mujer, infantil, joven, adulto, mayor)
+    'desglose': 'none'}  # lista diponible(edad, sexo)
+    messages = flag_alert(master_json, spark)
+    #nom_e, nom_m, pob_m = pob_municipio(estado, municipio, spark)
+    #nom_e, nom_m, pob_m = pob_municipio('Nuevo Leon', 'Monterrey', spark)
+    print(messages)
+    return messages
     
 if __name__ == '__main__':
     spark = begin_spark()

@@ -44,8 +44,6 @@ def clean_str(x, y):
 
 def get_CVEGEO_mun(estado, municipio):
     df_mun = pd.read_csv('BackendFlask\INEGIBot\input\df_diccionario_mun.csv')
-    #clave = df_mun.loc['NOMGEO2' == municipio and 'NOM_ENT2' == estado ]
-    #clave = str(int(df_mun.loc[clave]['CVEGEO']))
     clave = df_mun.query("NOM_ENT2 == '%s' and NOMGEO2 == '%s'" % (estado, municipio))
     clave = str(int(clave['CVEGEO']))
     return clave
@@ -69,6 +67,6 @@ def pob_municipio(estado, municipio, spark):
     return nom_e, nom_m, pob_m
 
 spark = begin_spark()
-nom_e, nom_m, pob_m = pob_municipio('Oaxaca', 'Abejones', spark)
-print('La población del municipio de ' + str(nom_m) + ', ' + str(nom_e) + ' es: '+str(pob_m))
+#nom_e, nom_m, pob_m = pob_municipio('Oaxaca', 'Abejones', spark)
+#print('La población del municipio de ' + str(nom_m) + ', ' + str(nom_e) + ' es: '+str(pob_m))
 #print(pob_municipio('Monterrey', spark))
