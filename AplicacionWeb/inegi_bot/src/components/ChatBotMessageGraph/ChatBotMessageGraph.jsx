@@ -44,6 +44,9 @@ export const ChatBotMessageGraph = ({graph, setActiveGraph}) => {
                 label: graph.datasets[i].label,
                 data: graph.labels.map((label, index) => graph.datasets[i].data[index]),
                 backgroundColor: graph.datasets[i].backgroundColor,
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 2,
+                borderRadius: 2,
             };
             datasets.push(dataset);
         }
