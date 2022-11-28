@@ -138,7 +138,6 @@ def flag_alert(json_flag, spark):
     municipio_flag = (df_mun.NOMGEO2 == json_flag['municipio']).any()
     filtro_flag = json_flag['filtro'] in filtro_list
     desglose_flag = json_flag['desglose'] in ['edad', 'sexo']
-    campos_filtro = campos_filtro_dic[json_flag['filtro']] # campos necesarios para cada filtro
     clave, tabla, nombregeo = define_geo(json_flag, municipio_flag, spark)  # Se obtienen la clave del municipio/estado y su nombre
     compatible = get_compatibles(json_flag['filtro'], json_flag['desglose'])  # variable para determinar si es compatible el filtro con el desglose en caso negativo se muestra solo el filtro
     if filtro_flag == False and desglose_flag == False: #doble desglose general
@@ -162,6 +161,7 @@ def flag_alert(json_flag, spark):
             messages = to_json_simple_desglose(message_str, label_sexo, data_pob_sex)
             return messages
     elif filtro_flag == True and desglose_flag == True and compatible == True: # aplicando filtro y desglose
+        campos_filtro = campos_filtro_dic[json_flag['filtro']] # campos necesarios para cada filtro
         if json_flag['desglose'] == 'edad':  # aplicando desglose por edad
             if json_flag['filtro'] == 'hombre':
                 data_pob = pob_edad(clave, tabla, campos_pob_hombres, spark)
@@ -187,6 +187,7 @@ def flag_alert(json_flag, spark):
             messages = to_json_simple_desglose(message_str, label_sexo, data_pob_sex)
             return messages
     elif filtro_flag == True: # aplicando filtro sin desglose 
+        campos_filtro = campos_filtro_dic[json_flag['filtro']] # campos necesarios para cada filtro
         nom_message, pob_filtro_message = get_pob_message(clave, tabla, nombregeo, spark, campos_filtro)
         message_str = "En 2020 la poblacion %s en %s era de %s" % (str_filtro_dic[json_flag['filtro']], nom_message,pob_filtro_message)
         messages = to_json_simple_message(message_str)
@@ -224,7 +225,7 @@ def to_json_simple_desglose(message_str, label, data_pob):
             "datasets": [{
                     "label": "Poblacion",
                     "data":data_pob,
-                    "backgroundColor": ["rgb(1, 67, 143)", "rgb(255, 99, 132)"]
+                    "backgroundColor": "rgb(160, 160, 160)"
                     }
                 ]
             }   
