@@ -99,11 +99,11 @@ def get_pob_message(clave, tabla, nombregeo, spark, campos_pob): #ajustar cambio
     pob_m = pob_m.toPandas().to_numpy()
     if tabla == 'estados':
         nom_message = str(pob_m[0][0])
-        pob_message = str(pob_m[0][1])
+        pob_message = str(int(pob_m[0][1]))
         return nom_message, pob_message
     else:
         nom_message = str(pob_m[0][0]) + ', ' + str(pob_m[0][1])
-        pob_message = str(pob_m[0][2])
+        pob_message = str(int(pob_m[0][2]))
         return nom_message, pob_message
 
 
@@ -168,7 +168,7 @@ def flag_alert(json_flag, spark):
             if json_flag['filtro'] == 'mujer':
                 data_pob = pob_edad(clave, tabla, campos_pob_mujeres, spark)
             nom_message, pob_filtro_message = get_pob_message(clave, tabla, nombregeo, spark, campos_filtro)
-            message_str = "En 2020 la poblacion %s en %s era de %s. A continuación se muestra desglosada por edad" % (str_filtro_dic[json_flag['filtro']], nom_message,pob_filtro_message)
+            message_str = "En 2020 la poblacion %s en %s era de %s. A continuación se muestra desglosada por edad" % (str_filtro_dic[json_flag['filtro']], nom_message, pob_filtro_message)
             messages = to_json_simple_desglose(message_str, label_edad, data_pob)
             return messages
         if json_flag['desglose'] == 'sexo':
@@ -183,7 +183,7 @@ def flag_alert(json_flag, spark):
             data_pob_sex = pob_edad(clave, tabla, campos_filtro_sexo, spark) 
             nom_message, pob_hombres_message = get_pob_message(clave, tabla, nombregeo, spark, campos_rango_edad[0])
             nom_message, pob_mujeres_message = get_pob_message(clave, tabla, nombregeo, spark, campos_rango_edad[1])
-            message_str = "En 2020 la poblacion %s de hombres en %s era de %s y la de mujeres era de %s." % (str_filtro_dic[json_flag['filtro']], nom_message,pob_hombres_message, pob_mujeres_message)
+            message_str = "En 2020 la poblacion %s de hombres en %s era de %s y la de mujeres era de %s." % (str_filtro_dic[json_flag['filtro']], nom_message, pob_hombres_message, pob_mujeres_message)
             messages = to_json_simple_desglose(message_str, label_sexo, data_pob_sex)
             return messages
     elif filtro_flag == True: # aplicando filtro sin desglose 
@@ -203,12 +203,14 @@ def to_json_doble_desglose(nom_message, pob_message, label_edad, data_pob_hom, d
                 "datasets": [{
                         "label": "Hombres",
                         "data":data_pob_hom,
-                        "backgroundColor": "rgb(1, 67, 143)"
+                        "backgroundColor": "rgb(1, 67, 143)",
+                        "borderColor": "rgb(1, 50, 107)"
                     },
                     {
                         "label": "Mujeres",
                         "data":data_pob_muj,
-                        "backgroundColor": "rgb(255, 99, 132)"
+                        "backgroundColor": "rgb(255, 99, 132)",
+                        "borderColor": "rgb(191, 74, 99)"
                     }
                 ]
             }
@@ -225,7 +227,8 @@ def to_json_simple_desglose(message_str, label, data_pob):
             "datasets": [{
                     "label": "Poblacion",
                     "data":data_pob,
-                    "backgroundColor": "rgb(160, 160, 160)"
+                    "backgroundColor": "rgb(0, 119, 200)",
+                    "borderColor": "rgb(0, 89, 150)"
                     }
                 ]
             }   
