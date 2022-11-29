@@ -11,7 +11,7 @@ export const ChatBot = ({setActiveGraph}) => {
     const apiURL = "http://127.0.0.1:5000/master_funct/";
 
     const inputEnterPress = (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && !chatLog[chatLog.length - 1].user) {
             sendMessage();
         }
     }

@@ -44,9 +44,9 @@ export const ChatBotMessageGraph = ({graph, setActiveGraph}) => {
                 label: graph.datasets[i].label,
                 data: graph.labels.map((label, index) => graph.datasets[i].data[index]),
                 backgroundColor: graph.datasets[i].backgroundColor,
-                borderColor: 'rgb(0, 0, 0)',
-                borderWidth: 2,
-                borderRadius: 2,
+                borderColor: graph.datasets[i].borderColor,
+                borderWidth: 1.5,
+                borderRadius: 5,
             };
             datasets.push(dataset);
         }
@@ -61,13 +61,6 @@ export const ChatBotMessageGraph = ({graph, setActiveGraph}) => {
     const data_formatted = {
         labels: graph.labels,
         datasets: dataset_formatter(graph)
-            // [
-            // {
-            //     label: 'Población',
-            //     data: graph.data,
-            //     backgroundColor: 'rgb(255, 99, 132)'
-            // }
-        // ]
     };
 
     return (
