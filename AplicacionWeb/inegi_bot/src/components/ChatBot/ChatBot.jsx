@@ -8,7 +8,7 @@ export const ChatBot = ({setActiveGraph}) => {
         text: "Hola, soy INEGI BOT, ¿en qué te puedo ayudar?", type: "simple", user: false
     }]);
     const inputRef = createRef();
-    const apiURL = "http://127.0.0.1:5000/master_funct/";
+    const apiURL = "http://127.0.0.1:5000/query/";
 
     const inputEnterPress = (event) => {
         if (event.key === "Enter" && !chatLog[chatLog.length - 1].user) {
