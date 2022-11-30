@@ -1,0 +1,10 @@
+{
+    "recieved":{
+      "key":"eyJpZCI6IjQ3MzBjYmRhLWViNzYtNDVjYS04MTI0LWM4YzlkZjRmMDEyOCIsImlhdCI6MTY2Nzk0OTA3NH0",
+      "text":"Cual es la poblacion de Monterrey Nuevo leon",
+      "result":{
+        "detected":[["CIUDAD",1,"Puebla","nuevo_leon"],["ESTADO",1,"Puebla","nuevo_leon"],["DESGLOSE",1,"Edad","monterrey"],["FILTRO_SEXO",1,"Femenina","monterrey"]],
+        "indexes":[["ESTADO",34,42,1,[7,8],["nuevo","leon"]],["CIUDAD",24,31,2,[6],["monterrey"]]]
+      }
+    }
+  }
