@@ -3,6 +3,7 @@ from flask import Flask, send_file
 from flask_cors import CORS
 from spark_nacional import *
 from flags import *
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -76,6 +77,13 @@ def hello_world2(estado, municipio):
 
 @app.route('/master_funct/<master_json>', methods = ['GET'])
 def pandora(master_json):
+    messages = {'root':{}}
+    print(messages)
+    with open('.\BackendFlask\INEGIBot\master_json_example.json') as json_file:
+        master_json = json.loads(json_file.read())
+        
+    if master_json['root'] == None:
+        
     
     if master_json == '1':
         master_json = {'municipio': 'none',  #Diccionario de pruebas para ingresar parametros

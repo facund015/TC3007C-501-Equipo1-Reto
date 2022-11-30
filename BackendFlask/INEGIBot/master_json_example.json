@@ -1,0 +1,67 @@
+{
+    "root": {
+        "intentName": "GRAFICACION",
+        "defaultResponse": "RESPUESTA EJEMPLO",
+        "entities": {
+            "text":[
+                {
+                    "entityName": "CIUDAD",
+                    "score": 1,
+                    "id": 0,
+                    "inQuestion": true,
+                    "originalText": "puebla",
+                    "positions": [3],
+                    "words": ["puebla"],
+                    "record": true,
+                    "synonymDetected": "Puebla"
+                },
+                {
+                    "entityName": "CIUDAD",
+                    "score": 1,
+                    "id": 0,
+                    "inQuestion": true,
+                    "originalText": "puebla",
+                    "positions": [4],
+                    "words":["puebla"],
+                    "record": true,
+                    "synonymDetected": "Puebla"
+                }
+            ]
+        },
+        "intentInfo":{
+            "id": 0,
+            "intentName": "GRAFICACION",
+            "intentType": "mercury",
+            "normalizedScore": 0.4260101914405823
+        },
+        "intents":[
+            {
+                "id": 0,
+                "intentName": "GRAFICACION",
+                "intentType": "mercury",
+                "normalizedScore": 0.4260101914405823
+            },
+            {
+                "id": 0,
+                "intentName": "SALUDO",
+                "intentType": "mercury",
+                "normalizedScore": 0.06279796361923218
+            }
+        ],
+        "query": "poblacion de puebla puebla",
+        "cleanedQuery": "poblacion de",
+        "response": "Ciudad Ciudad ",
+        "sessionKey": "NEURAAN-ee29d5a3-d34b-4de7-bd96-0c44a06f0e90",
+        "responseByEntity":[
+            {
+                "entityName": "CIUDAD",
+                "text": "Ciudad"
+            },
+            {
+                "entityName": "CIUDAD",
+                "text": "Ciudad"
+            }
+        ],
+        "responsesForEntitiesNotRelated": ""
+    }
+}
