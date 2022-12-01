@@ -58,7 +58,7 @@ def query(input):
     
     messages = {
         "type": "simple",
-        "message": "Hubo un error con la consulta, favor de verificar el formato del mensaje con los lineamientos en el boton de ayuda"
+        "message": "Hubo un error con la consulta, favor de verificar el formato del mensaje con los lineamientos en el boton de ayuda."
         }
     
     # with open('.\BackendFlask\INEGIBot\master_json_example_2.json', encoding='utf-8') as json_file:
