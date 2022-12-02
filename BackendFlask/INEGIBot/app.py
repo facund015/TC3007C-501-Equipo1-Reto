@@ -123,13 +123,19 @@ def query(input):
                     else:
                         invalid_location_flag = True
                 else :
-                    invalid_location_flag = True      
+                    if cities[0] == 'Veracruz':
+                        master_json['municipio'] = cities[1]
+                        master_json['estado'] = 'Veracruz de Ignacio de la Llave'
+                    elif cities[1] == 'Veracruz':
+                        master_json['municipio'] = cities[0]
+                        master_json['estado'] = 'Veracruz de Ignacio de la Llave'
+                    else:
+                        invalid_location_flag = True      
         elif single_city_flag:
             city = cities[0]
             if city in df_estados['NOMGEO'].values:
                 master_json['estado'] = city
             elif city == 'Veracruz':
-                master_json['municipio'] = 'Veracruz'
                 master_json['estado'] = 'Veracruz de Ignacio de la Llave'
             else:
                 invalid_location_flag = True
