@@ -10,23 +10,6 @@ import requests
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/pob_municipal/<estado>/<municipio>', methods = ['GET'])
-def hello_world2(estado, municipio):
-    nom_e, nom_m, pob_m = pob_municipio(estado, municipio, spark)
-    #nom_e, nom_m, pob_m = pob_municipio('Nuevo Leon', 'Monterrey', spark)
-    print(estado, municipio)
-    
-    messages = [
-        {
-            "type": "simple",
-            "message":"En 2020 la poblacion de %s ,%s era de %s personas" % (nom_m, nom_e, pob_m)
-            }
-        }
-    ]
-    
-    return messages[0]
-
-
 @app.route('/query/<input>', methods = ['GET'])
 def query(input): 
     neuraan_json = {'results': {}}
