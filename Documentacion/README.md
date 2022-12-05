@@ -9,6 +9,8 @@ Dentro de esta carpeta se encuentran los siguientes archivos:
 - `Diseno_de_funcionalidad_backend.pdf`: Documento conteniendo el diseño de la funcionalidad del backend.
 - `Documentacion_frontend.pdf`: Documento conteniendo la documentación del frontend.
 - `Evaluacion_modelo.pdf`: Documnento conteniendo la evaluación del modelo.
+- `Reporte_final.pdf`: Documento conteniendo el reporte final del proyecto.
+- `Manual_de_instalacion.pdf`: Documento conteniendo el manual de instalación.
 
 ## Especificación de requerimientos
 En este documento se encuentra la especificación de requerimientos del proyecto. En este se puede encontrar la descripción del problema, los objetivos, los requerimientos funcionales y no funcionales, los supuestos y las restricciones.
@@ -33,3 +35,9 @@ En este documento se encuentra la documentación del frontend del proyecto. En e
 
 ## Evaluación del modelo
 En este documento se encuentra la evaluación del modelo del proyecto. En este se puede encontrar a detalle las metricas utilizadas para medir el desempeño del modelo y su interaccion con todo el sistema.
+
+## Reporte final
+En este documento se encuentra el reporte final del proyecto. En este se puede encontrar a detalle el los aspectos mas importantes del proyecto.
+
+## Manual de instalación
+En este documento se encuentra el manual de instalación del proyecto. En este se puede encontrar a detalle los pasos para instalar el proyecto.
