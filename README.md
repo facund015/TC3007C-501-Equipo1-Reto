@@ -1,7 +1,9 @@
 # TC3007C-501-Equipo1-Reto
 
 Repositorio para el reto de la asignatura TC3007C Inteligencia artificial avanzada para la ciencia de datos II del Equipo 1
+
 ## Integrantes:
+
 - Camila P. Cusicanqui Padilla A00571258 
 - Suemy Aquino Zumaya A00828585 
 - Javier de Golferichs García A01139500
